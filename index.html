@@ -44,6 +44,12 @@
             color: white;
             position: absolute;
         }
+        /* Ensure the second page is hidden at the start */
+        #celebrationPage {
+            display: none;
+            background-color: pink;
+            padding: 50px;
+        }
     </style>
 </head>
 <body>
@@ -54,22 +60,22 @@
             <button id="yes">Yes</button>
             <button id="no">No</button>
         </div>
-        <p>even if you try to say no ....you can't👀</p>
+        <p>Even if you try to say no ....you can't 👀</p>
     </div>
 
-    <div id="celebrationPage" style="display: none;">
+    <div id="celebrationPage">
         <h1>🎉 Yay! You said YES! ❤️</h1>
         <p style="font-size: 1.5em;">I LOVE YOUUU SOO SO MUCHHH ABHIII!!!!!!! 🎊💖</p>
         <p style="font-size: 1.5em;">YOU and ME</p>
         <p style="font-size: 1.5em;">make a perfect WE 💖💖💖 </p>
         <p style="font-size: 1.5em;">Taking this time to tell my favourite guy how much I like him</p>
         <p style="font-size: 1.5em;">I tripped and fell</p>
-        <p style="font-size: 0.5em;">in love with youuuu</p>
-        <p style="font-size: 1.5em;">you mean the world to me</p>
-        <p style="font-size: 1.5em;">You stole a 🍕 of my heart</p> <!-- Fixed closing tag -->
-        <p style="font-size: 1.5em;">here is an undying rose for you 🌹</p>      
+        <p style="font-size: 1.5em;">in love with youuuu</p>
+        <p style="font-size: 1.5em;">You mean the world to me</p>
+        <p style="font-size: 1.5em;">You stole a 🍕 of my heart</p>
+        <p style="font-size: 1.5em;">Here is an undying rose for you 🌹</p>      
         <p style="font-size: 1.5em;">I can never stop wanting you</p>
-        <p style="font-size: 1.5em;">♾️♾️♾️♾️</p>
+        <p style="font-size: 2em;">♾️♾️♾️♾️</p>
     </div>
 
     <script>
@@ -79,13 +85,16 @@
         const celebrationPage = document.getElementById("celebrationPage");
 
         yesButton.addEventListener("click", function() {
-            confetti();
-            launchHeartBombs(); // Fixed function call
+            console.log("Yes clicked! Showing celebration page...");
+            confetti();  
+            launchHeartBombs();  
+
+            // Switch to the second page after 1.5 seconds
             setTimeout(() => {
-                mainPage.style.display = "none";
-                celebrationPage.style.display = "block";
+                mainPage.style.display = "none";  // Hide first page
+                celebrationPage.style.display = "block"; // Show second page
                 launchCelebration();
-            }, 1000);
+            }, 1500);
         });
 
         noButton.addEventListener("mouseover", function() {
@@ -96,7 +105,10 @@
         });
 
         function launchCelebration() {
-            setInterval(() => confetti(), 500);
+            setInterval(() => {
+                confetti();
+                launchHeartBombs();
+            }, 700);
         }
 
         function launchHeartBombs() {
