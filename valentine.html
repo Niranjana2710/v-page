@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1"></script>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffcccb;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: white;
+            text-shadow: 2px 2px 5px red;
+            margin-top: 50px;
+        }
+        .buttons {
+            margin-top: 50px;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+            border-radius: 5px;
+        }
+        #yes {
+            background-color: green;
+            color: white;
+        }
+        #no {
+            background-color: red;
+            color: white;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="mainPage">
+        <h1>Will you be my Valentine? ❤️</h1>
+        <div class="buttons">
+            <button id="yes">Yes</button>
+            <button id="no">No</button>
+        </div>
+    </div>
+
+    <div id="celebrationPage" style="display: none;">
+        <h1>🎉 Yay! You said YES! ❤️</h1>
+        <p style="font-size: 1.5em;">Let's celebrate with love and joy! 🎊💖</p>
+    </div>
+
+    <script>
+        const yesButton = document.getElementById("yes");
+        const noButton = document.getElementById("no");
+        const mainPage = document.getElementById("mainPage");
+        const celebrationPage = document.getElementById("celebrationPage");
+
+        yesButton.addEventListener("click", function() {
+            confetti();
+            setTimeout(() => {
+                mainPage.style.display = "none";
+                celebrationPage.style.display = "block";
+                launchCelebration();
+            }, 1000);
+        });
+
+        noButton.addEventListener("mouseover", function() {
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 100);
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+        });
+
+        function launchCelebration() {
+            setInterval(() => confetti(), 500);
+        }
+    </script>
+</body>
+</html>
