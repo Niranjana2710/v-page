@@ -12,7 +12,6 @@
             background-color: #ffcccb;
             overflow-x: hidden; /* Prevents horizontal scrolling */
             overflow-y: auto; /* Allows vertical scrolling */
-
         }
         h1 {
             font-size: 2.5em;
@@ -31,7 +30,7 @@
             margin: 10px;
             border-radius: 5px;
         }
-        m {
+        p {
             font-size: 1.5em;
             margin-top: 20px;
             color: black;
@@ -63,13 +62,12 @@
         <p style="font-size: 1.5em;">I LOVE YOUUU SOO SO MUCHHH ABHIII!!!!!!! 🎊💖</p>
         <p style="font-size: 1.5em;">YOU and ME</p>
         <p style="font-size: 1.5em;">make a perfect WE 💖💖💖 </p>
-        <p style="font-size: 1.5em;">Taking this time to tell my favourite guy how much i like him</p>
+        <p style="font-size: 1.5em;">Taking this time to tell my favourite guy how much I like him</p>
         <p style="font-size: 1.5em;">I tripped and fell</p>
         <p style="font-size: 0.5em;">in love with youuuu</p>
         <p style="font-size: 1.5em;">you mean the world to me</p>
-        <p style="font-size: 1.5em;">🌍<🌞<🌌<🫵</p>
-        <p style="font-size: 1.5em;">You stole a 🍕 of my heart</p>
-        <p style="font-size: 1.5em;">here is an undying rose for you🌹</p>      
+        <p style="font-size: 1.5em;">You stole a 🍕 of my heart</p> <!-- Fixed closing tag -->
+        <p style="font-size: 1.5em;">here is an undying rose for you 🌹</p>      
         <p style="font-size: 1.5em;">I can never stop wanting you</p>
         <p style="font-size: 1.5em;">♾️♾️♾️♾️</p>
     </div>
@@ -82,7 +80,7 @@
 
         yesButton.addEventListener("click", function() {
             confetti();
-            launchHeartBombs();
+            launchHeartBombs(); // Fixed function call
             setTimeout(() => {
                 mainPage.style.display = "none";
                 celebrationPage.style.display = "block";
@@ -100,6 +98,25 @@
         function launchCelebration() {
             setInterval(() => confetti(), 500);
         }
+
+        function launchHeartBombs() {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement("div");
+                    heart.innerHTML = "💖";
+                    heart.style.position = "absolute";
+                    heart.style.fontSize = "30px";
+                    heart.style.color = "red";
+                    heart.style.left = Math.random() * window.innerWidth + "px";
+                    heart.style.top = Math.random() * window.innerHeight + "px";
+                    document.body.appendChild(heart);
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 2000);
+                }, i * 100);
+            }
+        }
     </script>
+
 </body>
 </html>
